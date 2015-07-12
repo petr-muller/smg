@@ -26,8 +26,3 @@ checkstyle {
   ignoreFailures = false
 }
 
-test {
-  testLogging {
-    events 'started', 'passed'
-  }
-}
