@@ -79,16 +79,14 @@ public class SMGJoinMatchObjectsTest {
 	public final void nonMemberObjectsTestObj1() {
     smg2.addHeapObject(srcObj2);
 
-    SMGJoinMatchObjects mo = new SMGJoinMatchObjects(SMGJoinStatus.EQUAL, smg1, smg2, null, null, srcObj1, srcObj2);
-    mo.getStatus(); // Avoid dead store warning
+    new SMGJoinMatchObjects(SMGJoinStatus.EQUAL, smg1, smg2, null, null, srcObj1, srcObj2);
   }
 
   @Test(expected = IllegalArgumentException.class)
 	public final void nonMemberObjectsTestObj2() {
     smg1.addHeapObject(srcObj1);
 
-    SMGJoinMatchObjects mo = new SMGJoinMatchObjects(SMGJoinStatus.EQUAL, smg1, smg2, null, null, srcObj1, srcObj2);
-    mo.getStatus(); // Avoid dead store warning
+    new SMGJoinMatchObjects(SMGJoinStatus.EQUAL, smg1, smg2, null, null, srcObj1, srcObj2);
   }
 
   @Test

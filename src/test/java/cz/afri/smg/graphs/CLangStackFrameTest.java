@@ -119,8 +119,7 @@ public class CLangStackFrameTest {
 	public final void cLangStackFrameMissingVariableTest() {
     Assert.assertFalse("Non-added variable is not present", sf.containsVariable("fooVaz"));
 
-    SMGObject smgObject = sf.getVariable("fooVaz");
-    smgObject.getLabel(); // Avoid dead store warning
+    sf.getVariable("fooVaz");
   }
 
   @Test

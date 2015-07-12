@@ -119,8 +119,8 @@ public final class CLangStackFrame {
   @Override
   public String toString() {
     StringBuilder toReturn = new StringBuilder("<");
-    for (String key : stackVariables.keySet()) {
-      toReturn.append(" ").append(stackVariables.get(key));
+    for (Map.Entry<String, SMGRegion> entry : stackVariables.entrySet()) {
+      toReturn.append(" ").append(entry);
     }
     toReturn.append(" >");
     return toReturn.toString();
