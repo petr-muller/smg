@@ -30,7 +30,6 @@ import cz.afri.smg.graphs.WritableSMG;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CPointerType;
-import cz.afri.smg.types.CType;
 
 
 final class TestHelpers {
@@ -91,10 +90,10 @@ final class TestHelpers {
     pSmg.addPointsToEdge(lPt);
     pSmg.addPointsToEdge(rPt);
 
-    pSmg.addHasValueEdge(new SMGEdgeHasValue(CType.createTypeWithLength(pPrototype.getSize()), 0, left,
-    							       pSmg.getNullValue()));
-    pSmg.addHasValueEdge(new SMGEdgeHasValue(CType.createTypeWithLength(pPrototype.getSize()), 0, right,
-    		                 pSmg.getNullValue()));
+    pSmg.addHasValueEdge(new SMGEdgeHasValue(CPointerType.getVoidPointer(), pLeftOffset, left, pSmg.getNullValue()));
+    pSmg.addHasValueEdge(new SMGEdgeHasValue(CPointerType.getVoidPointer(), pRightOffset, left, pSmg.getNullValue()));
+    pSmg.addHasValueEdge(new SMGEdgeHasValue(CPointerType.getVoidPointer(), pLeftOffset, right, pSmg.getNullValue()));
+    pSmg.addHasValueEdge(new SMGEdgeHasValue(CPointerType.getVoidPointer(), pRightOffset, right, pSmg.getNullValue()));
 
     return new Treeoid(root, left, right);
   }
