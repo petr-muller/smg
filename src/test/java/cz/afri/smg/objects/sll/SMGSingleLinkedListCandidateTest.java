@@ -118,7 +118,7 @@ public class SMGSingleLinkedListCandidateTest {
 
     SMGEdgeHasValue onlyOutboundEdge = abstractedSmg.getUniqueHV(SMGEdgeHasValueFilter.objectFilter(segment), true);
     Assert.assertEquals(offset, onlyOutboundEdge.getOffset());
-    Assert.assertSame(CPointerType.getVoidPointer(), onlyOutboundEdge.getType());
+    Assert.assertEquals(CPointerType.getVoidPointer(), onlyOutboundEdge.getType());
 
     SMGObject stopper = abstractedSmg.getPointer(onlyOutboundEdge.getValue()).getObject();
     Assert.assertTrue(stopper instanceof SMGRegion);
