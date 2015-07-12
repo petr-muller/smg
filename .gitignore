@@ -1,0 +1,8 @@
+bin
+build
+.checkstyle
+.classpath
+FindBugs
+.gradle
+.project
+.settings

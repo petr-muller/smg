@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'eclipse'
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  compile group: 'com.google.guava', name: 'guava', version: '12.0'
+  testCompile "org.mockito:mockito-core:1.+"
+  testCompile 'junit:junit:4.11'
+  compile 'com.google.code.findbugs:annotations:3.0.0'
+}
+
+tasks.withType(FindBugs) {
+  reports {
+    xml.enabled = false
+    html.enabled = true
+  }
+}
+
+checkstyle {
+  ignoreFailures = false
+}
+
+test {
+  testLogging {
+    events 'started', 'passed'
+  }
+}
