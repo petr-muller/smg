@@ -102,7 +102,8 @@ class SMGJoinFields {
             filterForSMG2.filterAtOffset(edge.getOffset());
             filterForSMG2.filterByType(edge.getType());
             if (!pSMG2.getHVEdges(filterForSMG2).iterator().hasNext()) {
-              returnSet.add(new SMGEdgeHasValue(edge.getType(), edge.getOffset(), pObj2, SMGValueFactory.getNewValue()));
+              returnSet.add(new SMGEdgeHasValue(edge.getType(), edge.getOffset(), pObj2,
+                                                SMGValueFactory.getNewValue()));
             }
         }
 

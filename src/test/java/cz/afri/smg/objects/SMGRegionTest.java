@@ -55,7 +55,7 @@ public class SMGRegionTest {
   }
 
   @Test(expected = UnsupportedOperationException.class)
-	public final void testJoinDiffSize() {
+  public final void testJoinDiffSize() {
     SMGRegion regionDiff = new SMGRegion(SIZE10, "region");
     region8.join(regionDiff);
   }
