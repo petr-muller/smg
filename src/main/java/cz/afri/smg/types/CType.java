@@ -24,7 +24,33 @@ public class CType {
   }
 
 	public final int getSize() {
-		return size;
+	  return size;
 	}
 
+	@Override
+	public String toString() {
+	  return size + "b type";
+	}
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + size;
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    CType other = (CType) obj;
+    if (size != other.size)
+      return false;
+    return true;
+  }
 }
