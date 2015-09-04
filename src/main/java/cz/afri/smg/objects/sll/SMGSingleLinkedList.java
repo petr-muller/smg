@@ -47,12 +47,13 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
   }
 
   //TODO: Abstract interface???
-  public int getLength() {
-    return length;
-  }
+  public int getLength() { return length; }
 
-  public int getOffset() {
-    return bindingOffset;
+  public int getOffset() { return bindingOffset; }
+
+  public int addLength(int pLen) {
+    length += pLen;
+    return length;
   }
 
   @Override
