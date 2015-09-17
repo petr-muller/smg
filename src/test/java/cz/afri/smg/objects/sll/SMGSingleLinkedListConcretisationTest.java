@@ -42,9 +42,8 @@ public class SMGSingleLinkedListConcretisationTest {
 
         Integer value = pointer.getValue();
         SMGSingleLinkedList sll = (SMGSingleLinkedList) smg.getPointer(value).getObject();
-        SMGSingleLinkedListConcretisation concretisation = new SMGSingleLinkedListConcretisation(sll);
 
-        HashSet<ReadableSMG> concretisedSmgSet = concretisation.execute(smg);
+        HashSet<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
         Assert.assertEquals(concretisedSmgSet.size(), 1);
         ReadableSMG concretisedSmg = concretisedSmgSet.iterator().next();
         // Test heap size
@@ -95,9 +94,7 @@ public class SMGSingleLinkedListConcretisationTest {
         smg.addHasValueEdge(hv);
         smg.addPointsToEdge(pt);
 
-        SMGSingleLinkedListConcretisation concretisation = new SMGSingleLinkedListConcretisation(sll);
-
-        HashSet<ReadableSMG> concretisedSmgSet = concretisation.execute(smg);
+        HashSet<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
         Assert.assertEquals(concretisedSmgSet.size(), 2);
         boolean noSll = false;
         for (ReadableSMG concretisedSmg : concretisedSmgSet) {
@@ -130,9 +127,7 @@ public class SMGSingleLinkedListConcretisationTest {
         Set<Integer> values = smg.getValues();
         Assert.assertEquals(values.size(), 2);
 
-        SMGSingleLinkedListConcretisation concretisation = new SMGSingleLinkedListConcretisation(sll);
-
-        HashSet<ReadableSMG> concretisedSmgSet = concretisation.execute(smg);
+        HashSet<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
         Assert.assertEquals(concretisedSmgSet.size(), 2);
 
         boolean noPointer = false;

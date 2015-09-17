@@ -23,6 +23,7 @@
  */
 package cz.afri.smg.objects.sll;
 
+import cz.afri.smg.SMGConcretisation;
 import cz.afri.smg.objects.SMGAbstractObject;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGObjectVisitor;
@@ -81,6 +82,11 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
   }
 
   @Override
+  protected SMGConcretisation createConcretisation() {
+    return new SMGSingleLinkedListConcretisation(this);
+  }
+
+  @Override
   public boolean isMoreGeneral(final SMGObject pOther) {
     if (!pOther.isAbstract()) {
       return true;
@@ -109,4 +115,5 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
 
     throw new UnsupportedOperationException("join() called on incompatible abstract objects");
   }
+
 }

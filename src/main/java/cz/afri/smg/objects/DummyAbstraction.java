@@ -24,6 +24,8 @@
 package cz.afri.smg.objects;
 
 
+import cz.afri.smg.SMGConcretisation;
+
 public class DummyAbstraction extends SMGAbstractObject {
 
   public DummyAbstraction(final SMGObject pPrototype) {
@@ -38,6 +40,11 @@ public class DummyAbstraction extends SMGAbstractObject {
   @Override
   public final boolean matchSpecificShape(final SMGAbstractObject pOther) {
     return true;
+  }
+
+  @Override
+  protected SMGConcretisation createConcretisation() {
+    return null;
   }
 
   @Override
