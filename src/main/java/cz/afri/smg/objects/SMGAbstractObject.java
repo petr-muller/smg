@@ -23,6 +23,12 @@
  */
 package cz.afri.smg.objects;
 
+import com.google.common.collect.Sets;
+import cz.afri.smg.SMGConcretisation;
+import cz.afri.smg.graphs.ReadableSMG;
+
+import java.util.HashSet;
+
 public abstract class SMGAbstractObject extends SMGObject {
 
   protected SMGAbstractObject(final int pSize, final String pLabel) {
@@ -34,10 +40,17 @@ public abstract class SMGAbstractObject extends SMGObject {
   }
 
   @Override
-  public final boolean isAbstract() {
-    return true;
-  }
+  public final boolean isAbstract() { return true; }
   public abstract boolean matchGenericShape(SMGAbstractObject pOther);
   public abstract boolean matchSpecificShape(SMGAbstractObject pOther);
 
+  public HashSet<ReadableSMG> concretise(ReadableSMG pSmg){
+    SMGConcretisation concretisation = createConcretisation();
+    if (concretisation != null)
+      return concretisation.execute(pSmg);
+    else
+      return Sets.newHashSet(pSmg);
+  }
+
+  protected abstract SMGConcretisation createConcretisation();
 }

@@ -23,6 +23,7 @@
  */
 package cz.afri.smg.objects;
 
+import cz.afri.smg.SMGConcretisation;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -103,6 +104,12 @@ public class SMGRegionTest {
       // TODO Auto-generated method stub
       Assert.fail();
       return false;
+    }
+
+    @Override
+    protected SMGConcretisation createConcretisation() {
+      Assert.fail();
+      return null;
     }
 
     @Override

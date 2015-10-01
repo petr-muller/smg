@@ -23,6 +23,7 @@
  */
 package cz.afri.smg.objects.sll;
 
+import cz.afri.smg.SMGConcretisation;
 import cz.afri.smg.objects.SMGAbstractObject;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGObjectVisitor;
@@ -47,12 +48,13 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
   }
 
   //TODO: Abstract interface???
-  public int getLength() {
-    return length;
-  }
+  public int getLength() { return length; }
 
-  public int getOffset() {
-    return bindingOffset;
+  public int getOffset() { return bindingOffset; }
+
+  public int addLength(int pLen) {
+    length += pLen;
+    return length;
   }
 
   @Override
@@ -77,6 +79,11 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
     }
     SMGSingleLinkedList otherSLL = (SMGSingleLinkedList) pOther;
     return (bindingOffset == otherSLL.bindingOffset) && (getSize() == otherSLL.getSize());
+  }
+
+  @Override
+  protected SMGConcretisation createConcretisation() {
+    return new SMGSingleLinkedListConcretisation(this);
   }
 
   @Override
@@ -108,4 +115,5 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
 
     throw new UnsupportedOperationException("join() called on incompatible abstract objects");
   }
+
 }

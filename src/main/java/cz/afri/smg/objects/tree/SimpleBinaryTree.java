@@ -23,6 +23,7 @@
  */
 package cz.afri.smg.objects.tree;
 
+import cz.afri.smg.SMGConcretisation;
 import cz.afri.smg.objects.SMGAbstractObject;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGObjectVisitor;
@@ -51,6 +52,12 @@ public class SimpleBinaryTree extends SMGAbstractObject {
   public final boolean matchSpecificShape(final SMGAbstractObject pOther) {
     // TODO Auto-generated method stub
     return false;
+  }
+
+  @Override
+  protected SMGConcretisation createConcretisation() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   @Override

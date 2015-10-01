@@ -23,6 +23,7 @@
  */
 package cz.afri.smg.objects.sll;
 
+import com.sun.corba.se.spi.ior.Writeable;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgePointsTo;
 import cz.afri.smg.graphs.SMGValueFactory;
@@ -76,6 +77,30 @@ public final class TestHelpers {
 
     return hv;
   }
+
+  public static Integer createSll(final WritableSMG pSmg, final int pLength, final int pSize, final int pOffset,
+                               final String pLabel) {
+    SMGRegion prototype = new SMGRegion(pSize, pLabel);
+    SMGSingleLinkedList sll = new SMGSingleLinkedList(prototype, pOffset, pLength);
+    Integer value = SMGValueFactory.getNewValue();
+    SMGEdgePointsTo pt = new SMGEdgePointsTo(value, sll, 0);
+    pSmg.addHeapObject(sll);
+    pSmg.addValue(value);
+    pSmg.addPointsToEdge(pt);
+    return value;
+  }
+
+  public static SMGEdgeHasValue createGlobalSll(final WritableSMG pSmg, final int pLength, final int pSize,
+                                                final int pOffset, final String pLabel) {
+    Integer value = TestHelpers.createSll(pSmg, pLength, pSize, pOffset, pLabel);
+    SMGRegion globalVar = new SMGRegion(SIZE8, pLabel);
+    SMGEdgeHasValue hv = new SMGEdgeHasValue(CPointerType.getVoidPointer(), 0, globalVar, value);
+    pSmg.addGlobalObject(globalVar);
+    pSmg.addHasValueEdge(hv);
+
+    return hv;
+  }
+
 
   private TestHelpers() {
   }
