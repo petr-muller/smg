@@ -26,3 +26,27 @@ checkstyle {
   ignoreFailures = false
 }
 
+def checkstyleMainWarningsFile = 'build/reports/checkstyle/main.xml'
+def checkstyleTestWarningsFile = 'build/reports/checkstyle/test.xml'
+
+task verifyNoCheckstyleWarningsMain(type: GradleBuild) {
+    doLast {
+        File warningsFile = file(checkstyleMainWarningsFile)
+        if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
+           throw new GradleException("There were checkstyle warnings! For more info check $warningsFile")
+        }
+    }
+}
+
+task verifyNoCheckstyleWarningsTest(type: GradleBuild) {
+    doLast {
+        File warningsFile = file(checkstyleTestWarningsFile)
+        if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
+            throw new GradleException("There were checkstyle warnings! For more info check $warningsFile")
+        }
+    }
+}
+
+checkstyleMain.finalizedBy verifyNoCheckstyleWarningsMain
+checkstyleTest.finalizedBy verifyNoCheckstyleWarningsTest
+
