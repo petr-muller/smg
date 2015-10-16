@@ -71,16 +71,17 @@ class CLangSMG extends SMG implements WritableSMG {
 
   /**
    * A flag signifying the edge leading to this state caused memory to be leaked
-   * TODO: Seems pretty arbitrary: perhaps we should have a more general solution,
-   *       like a container with (type, message) error witness kind of thing?
+   * TODO: Seems pretty arbitrary: perhaps we should have a more general
+   * solution, like a container with (type, message) error witness kind of
+   * thing?
    */
   private boolean hasLeaks = false;
 
   /**
    * A flag setting if the class should perform additional consistency checks.
-   * It should be useful only during debugging, when is should find bad
-   * external calls closer to their origin. We probably do not want t
-   * run the checks in the production build.
+   * It should be useful only during debugging, when is should find bad external
+   * calls closer to their origin. We probably do not want t run the checks in
+   * the production build.
    */
   private static boolean performChecks = false;
 
@@ -110,7 +111,8 @@ class CLangSMG extends SMG implements WritableSMG {
    *
    * Keeps consistency: yes
    *
-   * @param pHeap The original CLangSMG
+   * @param pHeap
+   *          The original CLangSMG
    */
   public CLangSMG(final CLangSMG pHeap) {
     super(pHeap);
@@ -140,10 +142,11 @@ class CLangSMG extends SMG implements WritableSMG {
    *
    * Keeps consistency: no
    *
-   * With checks: throws {@link IllegalArgumentException} when asked to add
-   * an object already present.
+   * With checks: throws {@link IllegalArgumentException} when asked to add an
+   * object already present.
    *
-   * @param pObject Object to add.
+   * @param pObject
+   *          Object to add.
    */
   @Override
   public void addHeapObject(final SMGObject pObject) {

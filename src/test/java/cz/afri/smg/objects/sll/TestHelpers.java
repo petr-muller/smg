@@ -23,7 +23,6 @@
  */
 package cz.afri.smg.objects.sll;
 
-import com.sun.corba.se.spi.ior.Writeable;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgePointsTo;
 import cz.afri.smg.graphs.SMGValueFactory;

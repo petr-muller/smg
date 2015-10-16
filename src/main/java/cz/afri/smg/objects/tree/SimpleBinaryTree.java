@@ -55,7 +55,7 @@ public class SimpleBinaryTree extends SMGAbstractObject {
   }
 
   @Override
-  protected SMGConcretisation createConcretisation() {
+  protected final SMGConcretisation createConcretisation() {
     // TODO Auto-generated method stub
     return null;
   }

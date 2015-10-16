@@ -23,7 +23,6 @@
  */
 package cz.afri.smg.objects;
 
-
 import cz.afri.smg.SMGConcretisation;
 
 public class DummyAbstraction extends SMGAbstractObject {
@@ -43,7 +42,7 @@ public class DummyAbstraction extends SMGAbstractObject {
   }
 
   @Override
-  protected SMGConcretisation createConcretisation() {
+  protected final SMGConcretisation createConcretisation() {
     return null;
   }
 
@@ -54,7 +53,7 @@ public class DummyAbstraction extends SMGAbstractObject {
 
   @Override
   public final boolean isMoreGeneral(final SMGObject pOther) {
-   return false;
+    return false;
   }
 
   @Override

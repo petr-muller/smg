@@ -29,7 +29,6 @@ import java.util.List;
 import cz.afri.smg.graphs.ReadableSMG;
 import cz.afri.smg.objects.sll.SMGSingleLinkedListFinder;
 
-
 public class SMGAbstractionManager {
   private ReadableSMG smg;
   private List<SMGAbstractionCandidate> abstractionCandidates = new ArrayList<>();

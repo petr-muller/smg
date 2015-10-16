@@ -32,7 +32,7 @@ import cz.afri.smg.objects.SMGRegion;
 public final class SMGSingleLinkedList extends SMGAbstractObject {
   private int length;
 
-  //TODO: Binding is likely to be more complicated later
+  // TODO: Binding is likely to be more complicated later
   private int bindingOffset;
 
   public SMGSingleLinkedList(final SMGRegion pPrototype, final int pOffset, final int pLength) {
@@ -47,12 +47,16 @@ public final class SMGSingleLinkedList extends SMGAbstractObject {
     length = pOriginal.length;
   }
 
-  //TODO: Abstract interface???
-  public int getLength() { return length; }
+  // TODO: Abstract interface???
+  public int getLength() {
+    return length;
+  }
 
-  public int getOffset() { return bindingOffset; }
+  public int getOffset() {
+    return bindingOffset;
+  }
 
-  public int addLength(int pLen) {
+  public int addLength(final int pLen) {
     length += pLen;
     return length;
   }

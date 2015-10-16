@@ -28,5 +28,6 @@ import cz.afri.smg.graphs.ReadableSMG;
 
 public interface SMGAbstractionCandidate {
   int getScore();
+
   ReadableSMG execute(ReadableSMG pSMG);
 }

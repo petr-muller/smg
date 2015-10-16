@@ -9,5 +9,5 @@ import cz.afri.smg.graphs.ReadableSMG;
 import java.util.HashSet;
 
 public interface SMGConcretisation {
-    HashSet<ReadableSMG> execute(ReadableSMG pSMG);
+  HashSet<ReadableSMG> execute(ReadableSMG pSMG);
 }

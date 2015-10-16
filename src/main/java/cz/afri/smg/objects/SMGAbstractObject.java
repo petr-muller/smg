@@ -40,16 +40,20 @@ public abstract class SMGAbstractObject extends SMGObject {
   }
 
   @Override
-  public final boolean isAbstract() { return true; }
+  public final boolean isAbstract() {
+    return true;
+  }
+
   public abstract boolean matchGenericShape(SMGAbstractObject pOther);
+
   public abstract boolean matchSpecificShape(SMGAbstractObject pOther);
 
-  public HashSet<ReadableSMG> concretise(ReadableSMG pSmg){
+  public final HashSet<ReadableSMG> concretise(final ReadableSMG pSmg) {
     SMGConcretisation concretisation = createConcretisation();
-    if (concretisation != null)
-      return concretisation.execute(pSmg);
-    else
+    if (concretisation == null) {
       return Sets.newHashSet(pSmg);
+    }
+    return concretisation.execute(pSmg);
   }
 
   protected abstract SMGConcretisation createConcretisation();
