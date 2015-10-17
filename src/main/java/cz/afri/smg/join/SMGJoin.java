@@ -37,6 +37,7 @@ import cz.afri.smg.graphs.SMGFactory;
 import cz.afri.smg.graphs.WritableSMG;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGRegion;
+import cz.afri.smg.types.CType;
 
 public final class SMGJoin {
   public static void performChecks(final boolean pOn) {
@@ -75,8 +76,8 @@ public final class SMGJoin {
         // the join. For now, we will treat this situation as unjoinable.
         return;
       }
-      SMGRegion finalObject = new SMGRegion(globalInSMG1);
-      smg.addGlobalObject(finalObject);
+      SMGRegion finalObject = smg.addGlobalVariable(CType.createTypeWithLength(globalInSMG1.getSize()),
+                                                    globalInSMG1.getLabel());
       mapping1.map(globalInSMG1, finalObject);
       mapping2.map(globalInSMG2, finalObject);
     }
@@ -100,8 +101,9 @@ public final class SMGJoin {
         }
         SMGRegion localInSMG1 = frameInSMG1.getVariable(localVar);
         SMGRegion localInSMG2 = frameInSMG2.getVariable(localVar);
-        SMGRegion finalObject = new SMGRegion(localInSMG1);
-        smg.addStackObject(finalObject);
+        SMGRegion finalObject = smg.addLocalVariable(CType.createTypeWithLength(localInSMG1.getSize()),
+                                                     localInSMG1.getLabel());
+
         mapping1.map(localInSMG1, finalObject);
         mapping2.map(localInSMG2, finalObject);
       }

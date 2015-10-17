@@ -28,6 +28,7 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import com.google.common.collect.Iterables;
 
 import cz.afri.smg.graphs.ReadableSMG;
@@ -40,6 +41,7 @@ import cz.afri.smg.graphs.WritableSMG;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CPointerType;
+import cz.afri.smg.types.CType;
 
 
 public class SMGAbstractionManagerTest {
@@ -52,8 +54,6 @@ public class SMGAbstractionManagerTest {
   @Before
   public final void setUp() {
     smg = SMGFactory.createWritableSMG();
-
-    SMGRegion globalVar = new SMGRegion(SIZE8, "pointer");
 
     SMGRegion next = null;
     final int items = 20;
@@ -75,9 +75,9 @@ public class SMGAbstractionManagerTest {
     }
 
     int address = SMGValueFactory.getNewValue();
+    SMGRegion globalVar = smg.addGlobalVariable(CType.createTypeWithLength(SIZE8), "pointer");
     SMGEdgeHasValue hv = new SMGEdgeHasValue(CPointerType.getVoidPointer(), OFFSET8, globalVar, address);
     SMGEdgePointsTo pt = new SMGEdgePointsTo(address, next, 0);
-    smg.addGlobalObject(globalVar);
     smg.addValue(address);
     smg.addPointsToEdge(pt);
     smg.addHasValueEdge(hv);

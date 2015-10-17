@@ -30,9 +30,11 @@ import cz.afri.smg.graphs.WritableSMG;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CPointerType;
+import cz.afri.smg.types.CType;
 
 public final class TestHelpers {
   private static final int SIZE8 = 8;
+  private static final CType TYPE8 = CType.createTypeWithLength(SIZE8);
 
 	public static Integer createList(final WritableSMG pSmg, final int pLength, final int pSize, final int pOffset,
 			                             final String pPrefix) {
@@ -58,9 +60,8 @@ public final class TestHelpers {
   public static SMGEdgeHasValue createGlobalList(final WritableSMG pSmg, final int pLength, final int pSize,
   		                                           final int pOffset, final String pVariable) {
     Integer value = TestHelpers.createList(pSmg, pLength, pSize, pOffset, pVariable);
-    SMGRegion globalVar = new SMGRegion(SIZE8, pVariable);
+    SMGRegion globalVar = pSmg.addGlobalVariable(TYPE8, pVariable);
     SMGEdgeHasValue hv = new SMGEdgeHasValue(CPointerType.getVoidPointer(), 0, globalVar, value);
-    pSmg.addGlobalObject(globalVar);
     pSmg.addHasValueEdge(hv);
 
     return hv;
@@ -92,9 +93,8 @@ public final class TestHelpers {
   public static SMGEdgeHasValue createGlobalSll(final WritableSMG pSmg, final int pLength, final int pSize,
                                                 final int pOffset, final String pLabel) {
     Integer value = TestHelpers.createSll(pSmg, pLength, pSize, pOffset, pLabel);
-    SMGRegion globalVar = new SMGRegion(SIZE8, pLabel);
+    SMGRegion globalVar = pSmg.addGlobalVariable(TYPE8, pLabel);
     SMGEdgeHasValue hv = new SMGEdgeHasValue(CPointerType.getVoidPointer(), 0, globalVar, value);
-    pSmg.addGlobalObject(globalVar);
     pSmg.addHasValueEdge(hv);
 
     return hv;

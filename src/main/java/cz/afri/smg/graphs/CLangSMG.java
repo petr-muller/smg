@@ -168,8 +168,7 @@ class CLangSMG extends SMG implements WritableSMG {
 
    * @param pObject Object to add
    */
-  @Override
-  public void addGlobalObject(final SMGRegion pObject) {
+  private void addGlobalObject(final SMGRegion pObject) {
     if (CLangSMG.performChecks() && globalObjects.values().contains(pObject)) {
       throw new IllegalArgumentException("Global object already in the SMG: [" + pObject + "]");
     }
@@ -196,8 +195,7 @@ class CLangSMG extends SMG implements WritableSMG {
    *
    * TODO: Shall we need an extension for putting objects to upper frames?
    */
-  @Override
-  public void addStackObject(final SMGRegion pObject) {
+  private void addStackObject(final SMGRegion pObject) {
     super.addObject(pObject);
     stackObjects.peek().addStackVariable(pObject.getLabel(), pObject);
   }

@@ -42,10 +42,12 @@ import cz.afri.smg.graphs.WritableSMG;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CPointerType;
+import cz.afri.smg.types.CType;
 
 public class SMGSingleLinkedListFinderTest {
 
 	private static final int SIZE8 = 8;
+	private static final CType TYPE8 = CType.createTypeWithLength(SIZE8);
   private static final int SIZE16 = 16;
 	private static final int SIZE24 = 24;
 
@@ -161,7 +163,7 @@ public class SMGSingleLinkedListFinderTest {
 
     Integer addressOfInside = SMGValueFactory.getNewValue();
     SMGEdgePointsTo insidePT = new SMGEdgePointsTo(addressOfInside, inside, 0);
-    SMGRegion inboundPointer = new SMGRegion(SIZE8, "inbound_pointer");
+    SMGRegion inboundPointer = smg.addGlobalVariable(TYPE8, "inbound_pointer");
     SMGEdgeHasValue inboundPointerConnection = new SMGEdgeHasValue(CPointerType.getVoidPointer(), 0, inboundPointer,
                                                                    addressOfInside);
 
@@ -188,17 +190,15 @@ public class SMGSingleLinkedListFinderTest {
     SMGEdgeHasValue headConnection = new SMGEdgeHasValue(CPointerType.getVoidPointer(), offset8, lastFromHead,
     		                                                 addressOfInside);
 
-    SMGRegion tailPointer = new SMGRegion(SIZE8, "tail_pointer");
+    SMGRegion tailPointer = smg.addGlobalVariable(TYPE8, "tail_pointer");
     SMGEdgeHasValue tailPointerConnection = new SMGEdgeHasValue(CPointerType.getVoidPointer(), 0, tailPointer, tail);
 
-    smg.addGlobalObject(tailPointer);
     smg.addHasValueEdge(tailPointerConnection);
 
     smg.addHeapObject(inside);
     smg.addValue(addressOfInside);
     smg.addPointsToEdge(insidePT);
 
-    smg.addGlobalObject(inboundPointer);
     smg.addHasValueEdge(inboundPointerConnection);
 
     smg.addHasValueEdge(tailConnection);

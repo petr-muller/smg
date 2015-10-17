@@ -273,10 +273,8 @@ public class SMGJoinFieldsTest {
 
   @Test
 	public final void mergeNonNullAplliedTest() {
-    SMGRegion obj1 = new SMGRegion(SIZE8, "Object 1");
-    SMGRegion obj2 = new SMGRegion(SIZE8, "Object 2");
-    smg1.addGlobalObject(obj1);
-    smg2.addGlobalObject(obj2);
+    SMGRegion obj1 = smg1.addGlobalVariable(MOCKTYPE8, "Object 1");
+    SMGRegion obj2 = smg2.addGlobalVariable(MOCKTYPE8, "Object 2");
 
     smg1.addValue(value1);
     smg1.addHasValueEdge(new SMGEdgeHasValue(MOCKTYPE4, 0, obj1, value1));

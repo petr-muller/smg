@@ -48,6 +48,7 @@ public class SMGJoinTest {
   		                                                                 ImmutableList.<CParameterDeclaration>of());
 
   private static final int SIZE8 = 8;
+  private static final CType TYPE8 = CType.createTypeWithLength(SIZE8);
 
   private WritableSMG smg1;
   private WritableSMG smg2;
@@ -60,26 +61,20 @@ public class SMGJoinTest {
 
   // Testing condition: adds an identical global variable to both SMGs
   private void addGlobalWithoutValueToBoth(final String pVarName) {
-    SMGRegion global1 = new SMGRegion(SIZE8, pVarName);
-    SMGRegion global2 = new SMGRegion(SIZE8, pVarName);
-
-    smg1.addGlobalObject(global1);
-    smg2.addGlobalObject(global2);
+    smg1.addGlobalVariable(TYPE8, pVarName);
+    smg2.addGlobalVariable(TYPE8, pVarName);
   }
 
   // Testing condition: adds an identical local variable to both SMGs
   private void addLocalWithoutValueToBoth(final String pVarName) {
-    SMGRegion local1 = new SMGRegion(SIZE8, pVarName);
-    SMGRegion local2 = new SMGRegion(SIZE8, pVarName);
-
-    smg1.addStackObject(local1);
-    smg2.addStackObject(local2);
+    smg1.addLocalVariable(TYPE8, pVarName);
+    smg2.addLocalVariable(TYPE8, pVarName);
   }
 
   // Testing condition: adds an identical global variable to both SMGs, with value
   private void addGlobalWithValueToBoth(final String pVarName) {
-    SMGRegion global1 = new SMGRegion(SIZE8, pVarName);
-    SMGRegion global2 = new SMGRegion(SIZE8, pVarName);
+    SMGRegion global1 = smg1.addGlobalVariable(TYPE8, pVarName);
+    SMGRegion global2 = smg2.addGlobalVariable(TYPE8, pVarName);
     Integer value1 = SMGValueFactory.getNewValue();
     Integer value2 = SMGValueFactory.getNewValue();
 
@@ -87,8 +82,6 @@ public class SMGJoinTest {
 		SMGEdgeHasValue hv1 = new SMGEdgeHasValue(size4, 0, global1, value1);
     SMGEdgeHasValue hv2 = new SMGEdgeHasValue(size4, 0, global2, value2);
 
-    smg1.addGlobalObject(global1);
-    smg2.addGlobalObject(global2);
     smg1.addValue(value1);
     smg2.addValue(value2);
     smg1.addHasValueEdge(hv1);
@@ -97,8 +90,8 @@ public class SMGJoinTest {
 
   // Testing condition: adds an identical local value to both SMGs, with value
   private void addLocalWithValueToBoth(final String pVarName) {
-    SMGRegion local1 = new SMGRegion(SIZE8, pVarName);
-    SMGRegion local2 = new SMGRegion(SIZE8, pVarName);
+    SMGRegion local1 = smg1.addLocalVariable(TYPE8, pVarName);
+    SMGRegion local2 = smg2.addLocalVariable(TYPE8, pVarName);
     Integer value1 = SMGValueFactory.getNewValue();
     Integer value2 = SMGValueFactory.getNewValue();
 
@@ -107,8 +100,6 @@ public class SMGJoinTest {
     SMGEdgeHasValue hv1 = new SMGEdgeHasValue(size4, 0, local1, value1);
     SMGEdgeHasValue hv2 = new SMGEdgeHasValue(size4, 0, local2, value2);
 
-    smg1.addStackObject(local1);
-    smg2.addStackObject(local2);
     smg1.addValue(value1);
     smg2.addValue(value2);
     smg1.addHasValueEdge(hv1);

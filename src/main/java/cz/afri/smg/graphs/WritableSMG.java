@@ -34,14 +34,22 @@ import cz.afri.smg.types.CType;
 
 
 public interface WritableSMG extends ReadableSMG {
+  /**
+   * Adds a new heap object to the SMG. The heap object may be both region and an abstract object.
+   * 
+   * @param pObject object to add to the SMG
+   */
   void addHeapObject(SMGObject pObject);
-  void addGlobalObject(SMGRegion pObject);
-  void addStackObject(SMGRegion pObject);
+  /**
+   * Adds a new stack frame to the SMG.
+   * 
+   * @param pFunction declaration of a function for which the stack frame is added
+   */
   void addStackFrame(CFunctionDeclaration pFunction);
   void dropStackFrame();
   void removeHeapObject(SMGObject pObject);
   SMGRegion addGlobalVariable(CType pType, String pVarName);
-  SMGRegion addLocalVariable(CType pTyep, String pVarName);
+  SMGRegion addLocalVariable(CType pType, String pVarName);
 
   void addValue(Integer pValue);
   void removeValue(Integer pValue);
