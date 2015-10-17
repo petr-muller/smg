@@ -125,9 +125,8 @@ class SMGNodeDotVisitor extends SMGObjectVisitor {
 
 public final class SMGPlotter {
   public static void debuggingPlot(final ReadableSMG pSmg, final String pId) throws IOException {
-//    SMGPlotter plotter = new SMGPlotter();
-
-    throw new UnsupportedOperationException("Not yet implemented");
+    SMGPlotter plotter = new SMGPlotter();
+    System.out.print(plotter.smgAsDot(pSmg, pId, pId));
   }
 
   private final HashMap <SMGObject, SMGObjectNode> objectIndex = new HashMap<>();
