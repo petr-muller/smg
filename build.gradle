@@ -2,6 +2,11 @@ apply plugin: 'java'
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'eclipse'
+apply plugin: 'java'
+
+task myJavadocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+}
 
 repositories {
   mavenCentral()
