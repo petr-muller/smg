@@ -6,3 +6,4 @@ FindBugs
 .gradle
 .project
 .settings
+*.class
