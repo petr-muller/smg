@@ -87,16 +87,53 @@ public interface WritableSMG extends ReadableSMG {
    */
   SMGRegion addLocalVariable(CType pType, String pVarName);
 
+  /**
+   * Adds a symbolic value to the SMG
+   *
+   * @param pValue
+   *          symbolic value to add
+   */
   void addValue(Integer pValue);
 
+  /**
+   * Removes a symbolic value from the SMG. Edges leading to and from the SMG are *not* removed, the caller is
+   * responsible for removing these, or the SMG will be left in an inconsistent state.
+   *
+   * @param pValue
+   *          symbolic value to remove
+   */
   void removeValue(Integer pValue);
 
+  /**
+   * Adds a new points-to edge to the SMG
+   *
+   * @param pEdge
+   *          edge to add to the SMG
+   */
   void addPointsToEdge(SMGEdgePointsTo pEdge);
 
+  /**
+   * Removes a points-to edge from the SMG.
+   *
+   * @param pValue
+   *          value from which leads the removed SMG
+   */
   void removePointsToEdge(Integer pValue);
 
+  /**
+   * Adds a new has-value edge to the SMG
+   *
+   * @param pEdge
+   *          edge to add to the SMG
+   */
   void addHasValueEdge(SMGEdgeHasValue pEdge);
 
+  /**
+   * Removes a has-value from the SMG
+   *
+   * @param pEdge
+   *          edge to remove from the SMG
+   */
   void removeHasValueEdge(SMGEdgeHasValue pEdge);
 
   void replaceHVSet(Set<SMGEdgeHasValue> pHV);
