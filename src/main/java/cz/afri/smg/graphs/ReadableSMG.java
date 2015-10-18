@@ -37,44 +37,67 @@ import cz.afri.smg.types.CType;
 
 public interface ReadableSMG {
   Set<SMGObject> getObjects();
+
   Map<String, SMGRegion> getGlobalObjects();
+
   Set<SMGObject> getHeapObjects();
+
   SMGRegion getObjectForVisibleVariable(String pVariable);
+
   ArrayDeque<CLangStackFrame> getStackFrames();
+
   SMGObject getNullObject();
+
   boolean isHeapObject(SMGObject pObject);
+
   boolean isGlobalObject(SMGObject pObject);
+
   SMGRegion getStackReturnObject(int pUp);
+
   SMGObject getObjectPointedBy(Integer pValue);
 
   boolean isObjectValid(SMGObject pRegion);
+
   BitSet getNullBytesForObject(SMGObject pObject);
 
   Set<Integer> getValues();
+
   boolean containsValue(Integer pValue);
+
   int getNullValue();
+
   boolean isUnequal(int pV1, int pV2);
+
   SMGSymbolicValue readValue(SMGObject pObject, int pOffset, CType pType);
 
   SMGEdgePointsTo getPointer(Integer pValue);
+
   Iterable<SMGEdgePointsTo> getPTEdges();
+
   boolean isPointer(Integer pValue);
+
   Integer getAddress(SMGObject pMemory, Integer pOffset);
 
-
   Iterable<SMGEdgeHasValue> getHVEdges();
+
   Iterable<SMGEdgeHasValue> getHVEdges(SMGEdgeHasValueFilter pFilter);
+
   SMGEdgeHasValue getUniqueHV(SMGEdgeHasValueFilter pFilter, boolean pStrict);
+
   boolean isCoveredByNullifiedBlocks(SMGObject pObject, int pOffset, CType pType);
+
   boolean isCoveredByNullifiedBlocks(SMGEdgeHasValue pEdge);
 
   boolean hasMemoryLeaks();
 
   Iterable<Integer> getNeqsForValue(Integer pValue);
+
   boolean haveNeqRelation(Integer pOp1, Integer pOp2);
+
   String getFunctionName(SMGRegion pObj);
 
   SMGExplicitValue getExplicit(SMGKnownSymValue pValue);
+
   boolean hasLocalVariable(String pVarName);
 
   boolean isIdenticalTo(ReadableSMG pOther);
