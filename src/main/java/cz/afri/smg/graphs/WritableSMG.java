@@ -32,42 +32,87 @@ import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CFunctionDeclaration;
 import cz.afri.smg.types.CType;
 
-
 public interface WritableSMG extends ReadableSMG {
   /**
    * Adds a new heap object to the SMG. The heap object may be both region and an abstract object.
-   * 
-   * @param pObject object to add to the SMG
+   *
+   * @param pObject
+   *          object to add to the SMG
    */
   void addHeapObject(SMGObject pObject);
+
+  /**
+   * Removes a given object from the SMG. All has-value edges coming from this object and point-to edges coming to this
+   * objects will be removed too. The method throws {@link IllegalArgumentException} if passed an object which is not a
+   * heap object in the SMG.
+   *
+   * @param pObject
+   *          object to remove from the SMG
+   */
+  void removeHeapObject(SMGObject pObject);
+
   /**
    * Adds a new stack frame to the SMG.
-   * 
-   * @param pFunction declaration of a function for which the stack frame is added
+   *
+   * @param pFunction
+   *          declaration of a function for which the stack frame is added
    */
   void addStackFrame(CFunctionDeclaration pFunction);
+
+  /**
+   * Removes a top stack frame from the SMG. All objects in the stack frame will be removed along with all has-value
+   * edges leading from them and points-to edges leading to them.
+   */
   void dropStackFrame();
-  void removeHeapObject(SMGObject pObject);
+
+  /**
+   * Adds a new global variable region to the SMG.
+   *
+   * @param pType
+   *          type of the variable
+   * @param pVarName
+   *          name of the variable
+   * @return newly created region for the variable
+   */
   SMGRegion addGlobalVariable(CType pType, String pVarName);
+
+  /**
+   * Adds a new local variable to the top stack frame of the SMG
+   *
+   * @param pType
+   *          type of the variable
+   * @param pVarName
+   *          name of the variable
+   * @return newly created region for the variable
+   */
   SMGRegion addLocalVariable(CType pType, String pVarName);
 
   void addValue(Integer pValue);
+
   void removeValue(Integer pValue);
 
   void addPointsToEdge(SMGEdgePointsTo pEdge);
+
   void removePointsToEdge(Integer pValue);
 
   void addHasValueEdge(SMGEdgeHasValue pEdge);
+
   void removeHasValueEdge(SMGEdgeHasValue pEdge);
+
   void replaceHVSet(Set<SMGEdgeHasValue> pHV);
 
   void setValidity(SMGRegion pRegion, boolean pValidity);
+
   void pruneUnreachable();
+
   void setMemoryLeak();
 
   void addNeqRelation(Integer pOp1, Integer pOp2);
+
   void mergeValues(int pOp1, int pOp2);
+
   void clearExplicit(SMGKnownSymValue pKey);
+
   void putExplicit(SMGKnownSymValue pKey, SMGKnownExpValue pValue);
 
   void free(Integer pAddress, Integer pOffset, SMGRegion pRegion);
