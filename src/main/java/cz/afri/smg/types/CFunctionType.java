@@ -16,4 +16,8 @@ public final class CFunctionType {
 	  return new CFunctionType(pReturnType);
 	}
 
+  @Override
+  public String toString() {
+    return returnType.toString();
+  }
 }

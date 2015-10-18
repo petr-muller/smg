@@ -26,4 +26,8 @@ public class CFunctionDeclaration {
     return params;
   }
 
+  @Override
+  public final String toString() {
+    return functionType + " " + name + "(" + params + ")";
+  }
 }

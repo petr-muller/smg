@@ -3,6 +3,7 @@ package cz.afri.smg.types;
 public class CType {
 
 	private static final int SIZE_INT = 4;
+	private static final int SIZE_POINTER = 8;
 
 	public static CType createTypeWithLength(final int pSizeInBytes) {
 		return new CType(pSizeInBytes);
@@ -11,6 +12,10 @@ public class CType {
 	public static CType getIntType() {
 		return createTypeWithLength(SIZE_INT);
 	}
+
+	public static CType getPointerType() {
+    return createTypeWithLength(SIZE_POINTER);
+  }
 
 	public static CType unknownType() {
 		return null;
