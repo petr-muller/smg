@@ -4,9 +4,9 @@
 
 package cz.afri.smg;
 
-import cz.afri.smg.graphs.ReadableSMG;
-
 import java.util.HashSet;
+
+import cz.afri.smg.graphs.ReadableSMG;
 
 public interface SMGConcretisation {
   HashSet<ReadableSMG> execute(ReadableSMG pSMG);

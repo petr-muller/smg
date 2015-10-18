@@ -19,7 +19,7 @@ public class SMGValues {
     long getAsLong();
   }
 
-  public interface SMGAddressValue extends SMGSymbolicValue {
+  interface SMGAddressValue extends SMGSymbolicValue {
 
     @Override boolean isUnknown();
 
@@ -53,7 +53,7 @@ public class SMGValues {
 
   }
 
-  public abstract static class SMGKnownValue {
+  abstract static class SMGKnownValue {
 
     /**
      * A symbolic value representing an explicit value.
@@ -347,7 +347,7 @@ public class SMGValues {
   /**
    * Class representing values which can't be resolved.
    */
-  public static final class SMGUnknownValue implements SMGSymbolicValue, SMGExplicitValue, SMGAddressValue
+  static final class SMGUnknownValue implements SMGSymbolicValue, SMGExplicitValue, SMGAddressValue
   {
 
     private static final SMGUnknownValue INSTANCE = new SMGUnknownValue();
@@ -446,7 +446,7 @@ public class SMGValues {
    * A class to represent a field. This class is mainly used
    * to store field Information.
    */
-  public static final class SMGField {
+  static final class SMGField {
 
     private static final SMGField UNKNOWN = new SMGField(SMGUnknownValue.getInstance(), CType.unknownType());
 
@@ -495,7 +495,7 @@ public class SMGValues {
    * A class to represent a value which points to an address. This class is mainly used
    * to store value information.
    */
-  public static final class SMGKnownAddVal extends SMGKnownSymValue implements SMGAddressValue {
+  static final class SMGKnownAddVal extends SMGKnownSymValue implements SMGAddressValue {
 
     /**
      * The address this value represents.
@@ -582,7 +582,7 @@ public class SMGValues {
    * A class to represent an Address. This class is mainly used
    * to store Address Information.
    */
-  public static class SMGAddress  {
+  static class SMGAddress  {
 
     public static final SMGAddress UNKNOWN =
         new SMGAddress(null, SMGUnknownValue.getInstance());

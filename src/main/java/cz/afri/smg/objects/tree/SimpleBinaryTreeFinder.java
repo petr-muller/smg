@@ -37,7 +37,7 @@ import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.types.CPointerType;
 
 
-public class SimpleBinaryTreeFinder implements SMGAbstractionFinder {
+class SimpleBinaryTreeFinder implements SMGAbstractionFinder {
 
   private ReadableSMG smg;
   private Map<SMGObject, Map<TreeBinding, SimpleBinaryTreeCandidate>> bindings = new HashMap<>();

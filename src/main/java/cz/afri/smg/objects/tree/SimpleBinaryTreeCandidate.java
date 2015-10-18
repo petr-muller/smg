@@ -38,7 +38,7 @@ import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CPointerType;
 
 
-public class SimpleBinaryTreeCandidate implements SMGAbstractionCandidate {
+class SimpleBinaryTreeCandidate implements SMGAbstractionCandidate {
   private final TreeBinding binding;
   private int depth;
   private final SMGObject root;

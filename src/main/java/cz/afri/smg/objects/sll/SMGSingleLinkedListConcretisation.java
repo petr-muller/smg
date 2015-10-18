@@ -23,7 +23,7 @@ import cz.afri.smg.objects.SMGRegion;
 import cz.afri.smg.types.CPointerType;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
-public class SMGSingleLinkedListConcretisation implements SMGConcretisation {
+class SMGSingleLinkedListConcretisation implements SMGConcretisation {
 
   private final SMGSingleLinkedList sll;
 

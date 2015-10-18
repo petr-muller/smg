@@ -25,7 +25,7 @@ package cz.afri.smg.graphs;
 
 import cz.afri.smg.objects.SMGObject;
 
-public abstract class SMGEdge {
+abstract class SMGEdge {
   private final int value;
   private final SMGObject object;
 

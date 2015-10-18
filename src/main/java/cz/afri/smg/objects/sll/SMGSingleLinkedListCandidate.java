@@ -39,7 +39,7 @@ import cz.afri.smg.types.CPointerType;
 import cz.afri.smg.types.CType;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
-public class SMGSingleLinkedListCandidate implements SMGAbstractionCandidate {
+class SMGSingleLinkedListCandidate implements SMGAbstractionCandidate {
   private final SMGObject start;
   private final int offset;
   private int length;
