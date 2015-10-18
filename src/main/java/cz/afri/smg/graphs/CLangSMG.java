@@ -127,16 +127,6 @@ class CLangSMG extends SMG implements WritableSMG {
     hasLeaks = pHeap.hasLeaks;
   }
 
-  @Override
-  public void removeHeapObject(final SMGObject pObj) {
-    super.removeObject(pObj);
-    if (isHeapObject(pObj)) {
-      heapObjects.remove(pObj);
-    } else {
-      throw new IllegalArgumentException("Cannot directly remove non-heap objects");
-    }
-  }
-
   /**
    * Add a object to the heap.
    *
@@ -460,9 +450,14 @@ class CLangSMG extends SMG implements WritableSMG {
     super.mergeValues(v1, v2);
   }
 
-  public final void removeHeapObjectAndEdges(final SMGObject pObject) {
-    heapObjects.remove(pObject);
-    removeObjectAndEdges(pObject);
+  @Override
+  public final void removeHeapObject(final SMGObject pObject) {
+    if (isHeapObject(pObject)) {
+      heapObjects.remove(pObject);
+      removeObjectAndEdges(pObject);
+    } else {
+      throw new IllegalArgumentException("Cannot directly remove non-heap objects");
+    }
   }
 
   @Override
