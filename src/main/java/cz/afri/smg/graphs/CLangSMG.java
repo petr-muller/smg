@@ -571,7 +571,6 @@ class CLangSMG extends SMG implements WritableSMG {
    * @param pRegion The memory the given Address belongs to.
    * @throws SMGInconsistentException
    */
-  @Override
   public void free(final Integer pAddress, final Integer pOffset, final SMGRegion pRegion) {
 
     if (!isHeapObject(pRegion)) {

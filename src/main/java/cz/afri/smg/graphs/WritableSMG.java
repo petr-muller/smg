@@ -151,6 +151,4 @@ public interface WritableSMG extends ReadableSMG {
   void clearExplicit(SMGKnownSymValue pKey);
 
   void putExplicit(SMGKnownSymValue pKey, SMGKnownExpValue pValue);
-
-  void free(Integer pAddress, Integer pOffset, SMGRegion pRegion);
 }
