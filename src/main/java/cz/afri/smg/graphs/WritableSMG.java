@@ -136,19 +136,70 @@ public interface WritableSMG extends ReadableSMG {
    */
   void removeHasValueEdge(SMGEdgeHasValue pEdge);
 
+  /**
+   * Removes all has-value edges from the SMG and adds a new set of has-value edges.
+   *
+   * @param pHV
+   *          The set of has-value edges to replace the old set
+   */
   void replaceHVSet(Set<SMGEdgeHasValue> pHV);
 
+  /**
+   * Sets validity of a region.
+   *
+   * @param pRegion
+   *          region for which to set validity
+   * @param pValidity
+   *          target validity
+   */
   void setValidity(SMGRegion pRegion, boolean pValidity);
 
+  /**
+   * Walks the whole SMG and removes unreachable elements (objects, values, edges) and invalid regions. If there was an
+   * unreachable valid object, a memory leak property of the SMG was set to true.
+   */
   void pruneUnreachable();
 
+  /**
+   * Sets the memory leak property of the SMG.
+   */
   void setMemoryLeak();
 
+  /**
+   * Adds an explicit non-equality relation between two values
+   *
+   * @param pOp1
+   *          first value
+   * @param pOp2
+   *          second value
+   */
   void addNeqRelation(Integer pOp1, Integer pOp2);
 
+  /**
+   * Merges two values (equivalence relation between two values)
+   *
+   * @param pOp1
+   *          first value
+   * @param pOp2
+   *          second value
+   */
   void mergeValues(int pOp1, int pOp2);
 
+  /**
+   * Clears an explicit value for a symbolic value
+   *
+   * @param pKey
+   *          symbolic value for which the explicit value will be cleared
+   */
   void clearExplicit(SMGKnownSymValue pKey);
 
+  /**
+   * Sets an explicit value for a symbolic value
+   *
+   * @param pKey
+   *          symbolic value
+   * @param pValue
+   *          explicit value
+   */
   void putExplicit(SMGKnownSymValue pKey, SMGKnownExpValue pValue);
 }
