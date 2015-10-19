@@ -24,6 +24,7 @@
 package cz.afri.smg.graphs;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -126,7 +127,9 @@ class SMGNodeDotVisitor extends SMGObjectVisitor {
 public final class SMGPlotter {
   public static void debuggingPlot(final ReadableSMG pSmg, final String pId) throws IOException {
     SMGPlotter plotter = new SMGPlotter();
-    System.out.print(plotter.smgAsDot(pSmg, pId, pId));
+    PrintWriter writer = new PrintWriter(pId + ".dot", "UTF-8");
+    writer.write(plotter.smgAsDot(pSmg, pId, pId));
+    writer.close();
   }
 
   private final HashMap <SMGObject, SMGObjectNode> objectIndex = new HashMap<>();
