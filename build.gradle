@@ -3,6 +3,8 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'eclipse'
 apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 task myJavadocs(type: Javadoc) {
   source = sourceSets.main.allJava
@@ -15,8 +17,8 @@ repositories {
 
 dependencies {
   compile group: 'com.google.guava', name: 'guava', version: '12.0'
-  testCompile "org.mockito:mockito-core:1.+"
-  testCompile 'junit:junit:4.+'
+  testCompile "org.mockito:mockito-core:1.10.19"
+  testCompile 'junit:junit:4.12'
   compile 'com.google.code.findbugs:annotations:3.0.0'
 }
 
@@ -55,3 +57,69 @@ task verifyNoCheckstyleWarningsTest(type: GradleBuild) {
 checkstyleMain.finalizedBy verifyNoCheckstyleWarningsMain
 checkstyleTest.finalizedBy verifyNoCheckstyleWarningsTest
 
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+group = "cz.afri"
+archivesBaseName = "smg"
+version = "1.0"
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name 'SMG'
+        packaging 'jar'
+        // optionally artifactId can be defined here
+        description 'SMG is a Java library implementing the abstract domain of symbolic memory graphs. The library is supposed to be used by static analyzers for C programs, especially those that need to deal with pointer-rich programs and those working with unbounded dynamic data structures.'
+        url 'https://github.com/petr-muller/smg'
+
+        scm {
+          connection 'scm:git:https://github.com/petr-muller/smg'
+          developerConnection 'scm:git:https://github.com/petr-muller/smg'
+          url 'https://github.com/petr-muller/smg'
+        }
+
+        licenses {
+          license {
+            name 'The Apache License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          }
+        }
+
+        developers {
+          developer {
+            id 'muller'
+            name 'Petr Muller'
+            email 'muller@redhat.com'
+          }
+        }
+      }
+    }
+  }
+}
