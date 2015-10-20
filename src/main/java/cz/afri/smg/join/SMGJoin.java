@@ -29,6 +29,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import cz.afri.smg.graphs.CLangStackFrame;
@@ -164,42 +165,18 @@ class SMGNodeMapping {
   private final Map<Integer, Integer> valueMap = new HashMap<>();
 
   @Override
-  @SuppressWarnings("checkstyle:avoidinlineconditionals")
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((objectMap == null) ? 0 : objectMap.hashCode());
-    result = prime * result + ((valueMap == null) ? 0 : valueMap.hashCode());
-    return result;
+    return Objects.hash(objectMap, valueMap);
   }
 
   @Override
   public boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
+    if (obj == null || !(obj instanceof SMGNodeMapping)) {
       return false;
     }
     SMGNodeMapping other = (SMGNodeMapping) obj;
-    if (objectMap == null) {
-      if (other.objectMap != null) {
-        return false;
-      }
-    } else if (!objectMap.equals(other.objectMap)) {
-      return false;
-    }
-    if (valueMap == null) {
-      if (other.valueMap != null) {
-        return false;
-      }
-    } else if (!valueMap.equals(other.valueMap)) {
-      return false;
-    }
-    return true;
+
+    return Objects.equals(objectMap, other.objectMap) && Objects.equals(valueMap, other.valueMap);
   }
 
   public SMGNodeMapping() { }
