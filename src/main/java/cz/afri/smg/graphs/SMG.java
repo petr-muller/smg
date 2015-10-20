@@ -1,7 +1,8 @@
 /*
- *  CPAchecker is a tool for configurable software verification.
- *  This file is part of CPAchecker.
+ *  This file is part of SMG, a symbolic memory graph Java library
+ *  Originally developed as part of CPAChecker, the configurable software verification platform
  *
+ *  Copyright (C) 2011-2015  Petr Muller
  *  Copyright (C) 2007-2014  Dirk Beyer
  *  All rights reserved.
  *
@@ -17,13 +18,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *
- *
- *  CPAchecker web page:
- *    http://cpachecker.sosy-lab.org
  */
 package cz.afri.smg.graphs;
 
-import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collections;
 import java.util.HashMap;
