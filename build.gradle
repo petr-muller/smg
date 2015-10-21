@@ -79,6 +79,9 @@ group = "cz.afri"
 archivesBaseName = "smg"
 version = "1.0"
 
+def ossrhUser = hasProperty('ossrhUsername') ? ossrhUsername : System.getenv('ossrhUsername')
+def ossrhPass = hasProperty('ossrhPassword') ? ossrhPassword : System.getenv('ossrhPassword')
+
 uploadArchives {
   repositories {
     mavenDeployer {
