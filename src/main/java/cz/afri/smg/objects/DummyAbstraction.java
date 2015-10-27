@@ -21,7 +21,7 @@
  */
 package cz.afri.smg.objects;
 
-import cz.afri.smg.SMGConcretisation;
+import cz.afri.smg.abstraction.SMGConcretisation;
 
 public class DummyAbstraction extends SMGAbstractObject {
 

@@ -29,6 +29,7 @@ import org.junit.Test;
 
 import com.google.common.collect.Iterables;
 
+import cz.afri.smg.abstraction.SMGAbstractionManager;
 import cz.afri.smg.graphs.ReadableSMG;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgeHasValueFilter;

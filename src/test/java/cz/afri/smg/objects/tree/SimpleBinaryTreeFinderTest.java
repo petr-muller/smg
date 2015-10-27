@@ -27,7 +27,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import cz.afri.smg.SMGAbstractionCandidate;
+import cz.afri.smg.abstraction.SMGAbstractionCandidate;
 import cz.afri.smg.graphs.SMGFactory;
 import cz.afri.smg.graphs.WritableSMG;
 import cz.afri.smg.objects.SMGRegion;

@@ -24,7 +24,7 @@ package cz.afri.smg.objects;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cz.afri.smg.SMGConcretisation;
+import cz.afri.smg.abstraction.SMGConcretisation;
 
 public class SMGRegionTest {
 

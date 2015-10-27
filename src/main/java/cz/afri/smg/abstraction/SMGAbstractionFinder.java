@@ -2,7 +2,8 @@
  *  This file is part of SMG, a symbolic memory graph Java library
  *  Originally developed as part of CPAChecker, the configurable software verification platform
  *
- *  Copyright (C) 2015  Viktor Malík
+ *  Copyright (C) 2011-2015  Petr Muller
+ *  Copyright (C) 2007-2014  Dirk Beyer
  *  All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +19,12 @@
  *  limitations under the License.
  *
  */
+package cz.afri.smg.abstraction;
 
-package cz.afri.smg;
-
-import java.util.HashSet;
+import java.util.Set;
 
 import cz.afri.smg.graphs.ReadableSMG;
 
-public interface SMGConcretisation {
-  HashSet<ReadableSMG> execute(ReadableSMG pSMG);
+public interface SMGAbstractionFinder {
+  Set<SMGAbstractionCandidate> traverse(ReadableSMG pSmg);
 }

@@ -30,7 +30,7 @@ import org.junit.Test;
 
 import com.google.common.collect.Iterables;
 
-import cz.afri.smg.SMGAbstractionCandidate;
+import cz.afri.smg.abstraction.SMGAbstractionCandidate;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgeHasValueFilter;
 import cz.afri.smg.graphs.SMGEdgePointsTo;

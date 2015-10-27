@@ -27,7 +27,7 @@ import java.util.Map;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import cz.afri.smg.SMGConcretisation;
+import cz.afri.smg.abstraction.SMGConcretisation;
 import cz.afri.smg.graphs.ReadableSMG;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgeHasValueFilter;

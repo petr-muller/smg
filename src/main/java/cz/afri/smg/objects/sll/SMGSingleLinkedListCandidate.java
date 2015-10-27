@@ -24,7 +24,7 @@ package cz.afri.smg.objects.sll;
 import java.util.HashMap;
 import java.util.Map;
 
-import cz.afri.smg.SMGAbstractionCandidate;
+import cz.afri.smg.abstraction.SMGAbstractionCandidate;
 import cz.afri.smg.graphs.ReadableSMG;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgeHasValueFilter;

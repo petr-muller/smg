@@ -21,7 +21,7 @@
  */
 package cz.afri.smg.objects.sll;
 
-import cz.afri.smg.SMGConcretisation;
+import cz.afri.smg.abstraction.SMGConcretisation;
 import cz.afri.smg.objects.SMGAbstractObject;
 import cz.afri.smg.objects.SMGObject;
 import cz.afri.smg.objects.SMGObjectVisitor;

@@ -19,7 +19,7 @@
  *  limitations under the License.
  *
  */
-package cz.afri.smg;
+package cz.afri.smg.abstraction;
 
 import java.util.ArrayList;
 import java.util.List;

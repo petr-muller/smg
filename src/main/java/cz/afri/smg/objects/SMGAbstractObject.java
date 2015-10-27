@@ -25,7 +25,7 @@ import java.util.HashSet;
 
 import com.google.common.collect.Sets;
 
-import cz.afri.smg.SMGConcretisation;
+import cz.afri.smg.abstraction.SMGConcretisation;
 import cz.afri.smg.graphs.ReadableSMG;
 
 public abstract class SMGAbstractObject extends SMGObject {

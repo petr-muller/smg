@@ -2,12 +2,11 @@
  *  This file is part of SMG, a symbolic memory graph Java library
  *  Originally developed as part of CPAChecker, the configurable software verification platform
  *
- *  Copyright (C) 2011-2015  Petr Muller
- *  Copyright (C) 2007-2014  Dirk Beyer
+ *  Copyright (C) 2015  Viktor Malík
  *  All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License
+ *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
@@ -20,12 +19,12 @@
  *
  */
 
-package cz.afri.smg;
+package cz.afri.smg.abstraction;
+
+import java.util.HashSet;
 
 import cz.afri.smg.graphs.ReadableSMG;
 
-public interface SMGAbstractionCandidate {
-  int getScore();
-
-  ReadableSMG execute(ReadableSMG pSMG);
+public interface SMGConcretisation {
+  HashSet<ReadableSMG> execute(ReadableSMG pSMG);
 }

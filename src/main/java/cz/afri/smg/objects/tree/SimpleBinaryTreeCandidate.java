@@ -24,7 +24,7 @@ package cz.afri.smg.objects.tree;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import cz.afri.smg.SMGAbstractionCandidate;
+import cz.afri.smg.abstraction.SMGAbstractionCandidate;
 import cz.afri.smg.graphs.ReadableSMG;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgeHasValueFilter;

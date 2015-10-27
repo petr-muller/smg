@@ -26,8 +26,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import cz.afri.smg.SMGAbstractionCandidate;
-import cz.afri.smg.SMGAbstractionFinder;
+import cz.afri.smg.abstraction.SMGAbstractionCandidate;
+import cz.afri.smg.abstraction.SMGAbstractionFinder;
 import cz.afri.smg.graphs.ReadableSMG;
 import cz.afri.smg.graphs.SMGEdgeHasValue;
 import cz.afri.smg.graphs.SMGEdgeHasValueFilter;
