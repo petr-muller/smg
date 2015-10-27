@@ -21,7 +21,6 @@
 
 package cz.afri.smg.objects.sll;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -65,7 +64,7 @@ public class SMGSingleLinkedListConcretisationTest {
     Integer value = pointer.getValue();
     SMGSingleLinkedList sll = (SMGSingleLinkedList) smg.getPointer(value).getObject();
 
-    HashSet<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
+    Set<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
     Assert.assertEquals(concretisedSmgSet.size(), 1);
     ReadableSMG concretisedSmg = concretisedSmgSet.iterator().next();
     // Test heap size
@@ -115,7 +114,7 @@ public class SMGSingleLinkedListConcretisationTest {
     smg.addHasValueEdge(hv);
     smg.addPointsToEdge(pt);
 
-    HashSet<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
+    Set<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
     Assert.assertEquals(concretisedSmgSet.size(), 2);
     boolean noSll = false;
     for (ReadableSMG concretisedSmg : concretisedSmgSet) {
@@ -148,7 +147,7 @@ public class SMGSingleLinkedListConcretisationTest {
     Set<Integer> values = smg.getValues();
     Assert.assertEquals(values.size(), 2);
 
-    HashSet<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
+    Set<ReadableSMG> concretisedSmgSet = sll.concretise(smg);
     Assert.assertEquals(concretisedSmgSet.size(), 2);
 
     boolean noPointer = false;

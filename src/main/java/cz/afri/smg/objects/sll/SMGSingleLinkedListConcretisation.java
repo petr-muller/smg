@@ -23,6 +23,7 @@ package cz.afri.smg.objects.sll;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -49,8 +50,8 @@ class SMGSingleLinkedListConcretisation implements SMGConcretisation {
 
   @SuppressFBWarnings(value = "WMI_WRONG_MAP_ITERATOR", justification = "We need to iterate over keys here")
   @Override
-  public final HashSet<ReadableSMG> execute(final ReadableSMG pSMG) {
-    HashSet<ReadableSMG> resultSet = new HashSet<>();
+  public final Set<ReadableSMG> execute(final ReadableSMG pSMG) {
+    Set<ReadableSMG> resultSet = new HashSet<>();
 
     WritableSMG newSMG = SMGFactory.createWritableCopy(pSMG);
 
@@ -115,7 +116,7 @@ class SMGSingleLinkedListConcretisation implements SMGConcretisation {
 
       // Remove SLL and all appropriate edges
       SMGEdgeHasValueFilter filter = SMGEdgeHasValueFilter.objectFilter(sll);
-      HashSet<SMGEdgeHasValue> toRemove = Sets.newHashSet(newSMGWithoutSll.getHVEdges(filter));
+      Set<SMGEdgeHasValue> toRemove = Sets.newHashSet(newSMGWithoutSll.getHVEdges(filter));
       for (SMGEdgeHasValue hv : toRemove) {
         newSMGWithoutSll.removeHasValueEdge(hv);
       }

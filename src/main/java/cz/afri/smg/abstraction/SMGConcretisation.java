@@ -21,10 +21,10 @@
 
 package cz.afri.smg.abstraction;
 
-import java.util.HashSet;
+import java.util.Set;
 
 import cz.afri.smg.graphs.ReadableSMG;
 
 public interface SMGConcretisation {
-  HashSet<ReadableSMG> execute(ReadableSMG pSMG);
+  Set<ReadableSMG> execute(ReadableSMG pSMG);
 }

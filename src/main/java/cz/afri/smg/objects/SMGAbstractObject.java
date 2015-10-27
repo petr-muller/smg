@@ -21,7 +21,7 @@
  */
 package cz.afri.smg.objects;
 
-import java.util.HashSet;
+import java.util.Set;
 
 import com.google.common.collect.Sets;
 
@@ -47,7 +47,7 @@ public abstract class SMGAbstractObject extends SMGObject {
 
   public abstract boolean matchSpecificShape(SMGAbstractObject pOther);
 
-  public final HashSet<ReadableSMG> concretise(final ReadableSMG pSmg) {
+  public final Set<ReadableSMG> concretise(final ReadableSMG pSmg) {
     SMGConcretisation concretisation = createConcretisation();
     if (concretisation == null) {
       return Sets.newHashSet(pSmg);
